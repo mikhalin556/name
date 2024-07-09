@@ -1,10 +1,10 @@
-import { Commet } from "react-loading-indicators"
+import { ThreeDot } from "react-loading-indicators"
 import styles from "./Loading.module.css"
 
 function showLoading() {
     return (
         <div className={styles.loading}>
-            <Commet color="#32cd32" size="medium" text="" textColor="" />
+            <ThreeDot variant="pulsate" color="#0079ff" size="medium" text="" textColor="" />
         </div>
     )
 }

@@ -1,20 +1,28 @@
-import { Outlet } from "react-router-dom";
-import { HeaderComponent } from "../Components/HeaderComponent";
-import { FooterComponent } from "../Components/FooterComponent";
+import { Outlet } from "react-router-dom"; 
+import { HeaderComponent } from "../Components/HeaderComponent"; 
+import { FooterComponent } from "../Components/FooterComponent"; 
+import { AppContext } from "../content/AppContext";
+import { useState } from "react";
+import { Cart } from "../Components/Cart";
+ 
+export function Root() { 
 
-export function Root() {
+    const [Modal, setModal] = useState(false)
 
-    return (
-        <>
-            <div className="wrapper">
-                <HeaderComponent/>
-                <main className="main">
-                    <div className="container">
-                        <Outlet/>
-                    </div>
-                </main>
-                <FooterComponent/>
-            </div>
-        </>
-    )
+    return ( 
+        <> 
+            <AppContext.Provider value={[Modal, setModal]}>
+                <div className="wrapper"> 
+                    {Modal ? <Cart/> : ''}
+                    <HeaderComponent/> 
+                    <main className="main"> 
+                        <div className="container"> 
+                            <Outlet/> 
+                        </div> 
+                    </main> 
+                    <FooterComponent/> 
+                </div> 
+            </AppContext.Provider>
+        </> 
+    ) 
 }
